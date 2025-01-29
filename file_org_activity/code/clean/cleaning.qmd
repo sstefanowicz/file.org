@@ -34,6 +34,18 @@ Practicing your keyboard shortcuts. Try out the following as you work on this ex
 # Implementation
 
 ```{r}
-
+#1
+weather <- read_csv("../../data/raw/weather.csv")
+getwd()
 ```
 
+```{r}
+#2
+weather2 <- weather %>% mutate(PrecipYr = na_if(PrecipYr,99999))
+
+#3 and 4
+weather2 <- weather2 %>% mutate(dayInYear = yday(mdy(date))) %>% mutate(month_name = month.abb[Month])
+
+#5
+write.csv(weather2, weather_clean.csv)
+```
